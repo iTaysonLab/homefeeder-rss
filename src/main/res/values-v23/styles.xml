@@ -1,0 +1,12 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/globalAccent</item>
+        <item name="colorPrimaryDark">@color/globalAccent</item>
+        <item name="colorAccent">@color/globalAccent</item>
+
+        <item name="android:statusBarColor">?android:windowBackground</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+
+        <item name="android:windowLightStatusBar">@bool/isLight</item>
+    </style>
+</resources>

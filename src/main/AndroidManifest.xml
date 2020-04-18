@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ua.itaysonlab.hfrss">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name="ua.itaysonlab.hfrss.Plugin"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:exported="true"
+            android:name="ua.itaysonlab.hfrss.ui.FeedManagerActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="ua.itaysonlab.hfsdk.HOMEFEEDER_PLUGIN_ENTRYPOINT"/>
+            </intent-filter>
+
+        <service android:name="ua.itaysonlab.hfrss.HFPluginService">
+            <intent-filter>
+                <action android:name="ua.itaysonlab.hfsdk.HOMEFEEDER_PLUGIN_SERVICE" />
+            </intent-filter>
+
+            <meta-data android:name="HF_PluginSDK_Version" android:value="2" />
+            <meta-data android:name="HF_Plugin_Name" android:value="@string/app_name" />
+            <meta-data android:name="HF_Plugin_Description" android:value="Simple RSS client for HomeFeeder" />
+            <meta-data android:name="HF_Plugin_Author" android:value="iTaysonLab" />
+
+            <!-- <action android:name="ua.itaysonlab.hfsdk.HOMEFEEDER_PLUGIN_ENTRYPOINT"/> is still required! -->
+            <meta-data android:name="HF_Plugin_HasSettingsActivity" android:value="true" />
+        </service>
+    </application>
+
+</manifest>

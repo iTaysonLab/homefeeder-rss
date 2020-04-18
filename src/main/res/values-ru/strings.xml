@@ -1,0 +1,8 @@
+<resources>
+    <string name="manager_title">Менеджер лент</string>
+    <string name="manager_add">Добавить</string>
+
+    <string name="add_title">Добавить источник ленты</string>
+    <string name="add_input_hint">URL</string>
+    <string name="add_input_desc">Поддерживаемые форматы: RSS, Atom</string>
+</resources>

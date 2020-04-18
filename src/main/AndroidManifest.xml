@@ -25,6 +25,7 @@
 
                 <action android:name="ua.itaysonlab.hfsdk.HOMEFEEDER_PLUGIN_ENTRYPOINT"/>
             </intent-filter>
+        </activity>
 
         <service android:name="ua.itaysonlab.hfrss.HFPluginService">
             <intent-filter>

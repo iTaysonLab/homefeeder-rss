@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.prof.rssparser.Channel
 import com.prof.rssparser.Parser
 import kotlinx.android.synthetic.main.feed_item.view.*
@@ -85,14 +87,27 @@ class FeedManagerActivity: AppCompatActivity(), CoroutineScope by MainScope() {
         override fun onBindViewHolder(holder: SourceVH, position: Int) {
             val item = list[position]
             holder.itemView.apply {
-                this.app_icon.load(item.pic_url)
+                if (item.pic_url.isBlank()) {
+                    this.app_icon.visibility = View.GONE
+                } else {
+                    this.app_icon.visibility = View.VISIBLE
+                    this.app_icon.load(item.pic_url)
+                }
+
                 this.plugin_name.text = item.name
                 this.plugin_author.text = item.feed_url
                 this.plugin_desc.text = item.desc
 
                 this.plugin_status.setOnClickListener {
-                    HFPluginPreferences.remove(item)
-                    reload()
+                    AlertDialog.Builder(it.context).apply {
+                        setTitle(R.string.remove_title)
+                        setMessage(resources.getString(R.string.remove_desc, item.name))
+                        setNeutralButton(R.string.remove_action_nope, null)
+                        setPositiveButton(R.string.remove_action_yes) { _, _ ->
+                            HFPluginPreferences.remove(item)
+                            reload()
+                        }
+                    }.show()
                 }
             }
         }

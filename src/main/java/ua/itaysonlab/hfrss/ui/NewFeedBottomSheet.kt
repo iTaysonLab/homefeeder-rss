@@ -17,8 +17,15 @@ class NewFeedBottomSheet(private val callback: (String) -> Unit): BottomSheetDia
         return inflater.inflate(R.layout.add_feed_bottomsheet, container, false)
     }
 
+    override fun getTheme() = R.style.TransparentBottomSheet
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.close.setOnClickListener {
+            dismiss()
+        }
+
         view.add.setOnClickListener {
             val txt = view.url.text
             if (txt.isNullOrEmpty()) return@setOnClickListener

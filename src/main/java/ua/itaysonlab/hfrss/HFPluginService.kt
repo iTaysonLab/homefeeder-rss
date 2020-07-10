@@ -38,7 +38,7 @@ class HFPluginService: Service(), CoroutineScope by MainScope() {
             launch {
                 val list = mutableListOf<FeedItem>()
 
-                withContext(Dispatchers.Default) {
+                withContext(Dispatchers.IO) {
                     val parser = Parser(OkHttpClient())
 
                     HFPluginPreferences.parsedFeedList.forEach { model ->

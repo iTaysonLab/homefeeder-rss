@@ -5,4 +5,9 @@
     <string name="add_title">Добавить источник ленты</string>
     <string name="add_input_hint">URL</string>
     <string name="add_input_desc">Поддерживаемые форматы: RSS, Atom</string>
+
+    <string name="remove_title">Подтвердите действие</string>
+    <string name="remove_desc">Вы дейстительно хотите удалить %s из списка лент?</string>
+    <string name="remove_action_yes">Да</string>
+    <string name="remove_action_nope">Отменить</string>
 </resources>
